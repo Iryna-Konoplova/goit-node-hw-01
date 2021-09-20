@@ -14,11 +14,8 @@ async function listContacts() {
 async function getContactById(contactId) {
     const contacts = await fs.readFile(contactsPath);
     const allContacts = JSON.parse(contacts);
-    const contactById = allContacts.findIndex(contact => contact.id === Number(contactId));
+    const contactById = allContacts.find(contact => contact.id === Number(contactId));
     console.log(contactById);
-    if (contactById === -1) {
-        return null;
-    }
     return allContacts[contactById]
 };
 
